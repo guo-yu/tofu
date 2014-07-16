@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "description": "a all in one command line music player",
   "main": "index.js",
+  "bin": "./bin/cli",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node ./bin/cli 2>./err.log",
+    "test": "node ./bin/cli 2>./err.log"
   },
   "repository": {
     "type": "git",
@@ -27,5 +29,15 @@
   "bugs": {
     "url": "https://github.com/turingou/tofu/issues"
   },
-  "homepage": "https://github.com/turingou/tofu"
+  "homepage": "https://github.com/turingou/tofu",
+  "dependencies": {
+    "fsplus": "*",
+    "open": "~0.0.5",
+    "async": "~0.8.0",
+    "mkdirp": "~0.3.5",
+    "inquirer": "~0.5.0",
+    "colorful": "2.1.0",
+    "player": "0.1.7",
+    "term-list-enhanced": "0.1.0"
+  }
 }
