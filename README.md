@@ -4,17 +4,53 @@ a all in one command line music player
 
 ### Installation
 ````
-$ [sudo] npm install tofu
+$ [sudo] npm install tofu -g
 ````
 
+### Useage
+
+start the command line inferface:
+```
+$ tofu
+```
+change configs:
+```
+$ tofu config
+```
+start a api service:
+```
+$ tofu serve
+```
+
+### API endpoints
+tofu provides a set of HTTP API endpoints for develop, the default host is `http://localhost:9090`
+
+- GET `/playlist` : get the infomation of current playing list
+- GET `/playing`: get the infomation of current playing song
+- POST `/play`: start playing
+- POST `/stop`: stop playing
+- POST `/next`: switch to next song, and return the next song's infomation
 
 ### Example
+this is a simple example which using `tofu` as a module to play:
 ````javascript
 var tofu = require('tofu');
-````
 
-### API
-check this file: `index.js`
+tofu
+  .set('douban.fm', { email: 'i@mymail.com', password: '******'})
+  .set('163music', { email: 'my163mail@163.com', password: '****'})
+  .set('default', 'douban.fm');
+
+tofu
+  .play()
+  .switchTo('163music')
+  .stop();
+
+tofu
+  .getPlaylist(function(err, list){
+    // do sth. with the list
+  });
+````
 
 ### Contributing
 - Fork this repo
